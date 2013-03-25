@@ -36,10 +36,6 @@ group :test do
   gem 'factory_girl_rails', '4.1.0'
 end
 
-# MW 1/21 - Not working - commenting out until do dev install
-#group :production do
-#	gem 'pg', '0.12.2'
-#end
 
 
 # To use ActiveModel has_secure_password
