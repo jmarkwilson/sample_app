@@ -9,6 +9,10 @@ describe "Authentication" do
 
 		it { should have_selector( 'h1', text: 'Sign In') }
 		it { should have_selector('title', text: full_title('Sign In'))}
+
+		it { should_not have_link('Users')}
+		it { should_not have_link('Profile') }
+		it { should_not have_link('Settings') }
 	end
 
 	describe "signin" do
