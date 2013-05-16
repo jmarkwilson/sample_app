@@ -106,13 +106,38 @@ describe "Authentication" do
 			end
 		end
 
+		describe "as signed in user" do
+			let(:user) { FactoryGirl.create(:user) }
+			before { sign_in user }
+
+			describe "visit new user page" do
+				before { visit signup_path }
+				it { should_not have_selector('title', text: full_title('Sign Up')) }
+				it { should have_selector('h1', text: "Welcome") }
+			end
+
+			describe "submitting a create request to the Users#create action" do
+				before { post users_path }
+				specify { response.should redirect_to(root_path) }
+			end
+
+#Wait to implement when fiugure out how to logout in Rspec (Chap 9 ex 6)
+#			describe "visit signin page" do
+#				before { visit signin_path }
+#				it { should_not have_selector('title', text: full_title('Sign In')) }
+#				it { should have_selector('h1', text: "Welcome") }
+#			end
+
+		end
+
+
 		describe "as non-admin user" do
 			let(:user) { FactoryGirl.create(:user) }
 			let(:non_admin) { FactoryGirl.create(:user) }
 
 			before { sign_in non_admin }
 
-			describe "submitting a DELETE requrest to the Users#destroy action" do
+			describe "submitting a DELETE request to the Users#destroy action" do
 				before { delete user_path(user) }
 				specify { response.should redirect_to(root_path) }
 			end
