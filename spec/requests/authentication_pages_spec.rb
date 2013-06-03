@@ -141,7 +141,7 @@ describe "Authentication" do
 			describe "visit new user page" do
 				before { visit signup_path }
 				it { should_not have_selector('title', text: full_title('Sign Up')) }
-				it { should have_selector('h1', text: "Welcome") }
+				it { should have_selector('h1', text: user.name) }
 			end
 
 			describe "submitting a create request to the Users#create action" do
