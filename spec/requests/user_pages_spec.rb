@@ -177,7 +177,7 @@ describe "User Pages" do
 
 			it { should have_selector('title', text: full_title('Following')) }
 			it { should have_selector('h3', text: 'Following') }
-			it { should have_link(user.name, href: user_path(other_user)) }
+			it { should have_link(other_user.name, href: user_path(other_user)) }
 		end
 
 		describe "followers users" do
@@ -186,8 +186,8 @@ describe "User Pages" do
 				visit followers_user_path(other_user)
 			end
 
-			it { should have_selector('title', text: full_title('followers')) }
-			it { should have_selector('h3', text: 'followers') }
+			it { should have_selector('title', text: full_title('Followers')) }
+			it { should have_selector('h3', text: 'Followers') }
 			it { should have_link(user.name, href: user_path(user)) }
 		end
 	end
