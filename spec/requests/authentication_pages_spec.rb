@@ -101,6 +101,16 @@ describe "Authentication" do
 					before { visit users_path }
 					it { should have_selector('title', test: 'Sign In') }
 				end
+
+				describe "visiting the the following page" do
+					before { visit following_user_path(user) }
+					it { should have_selector('title', text: 'Sign In') }
+				end
+
+				describe "visiting the the followers page" do
+					before { visit followers_user_path(user) }
+					it { should have_selector('title', text: 'Sign In') }
+				end			
 			end
 
 			describe "in the Microposts controller" do
